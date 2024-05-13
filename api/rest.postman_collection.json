@@ -1,0 +1,740 @@
+{
+	"info": {
+		"_postman_id": "4051b75c-d721-46fb-a8d1-0bf35c1fc399",
+		"name": "rest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "signup",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"jwt\",pm.response.json().token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"admin\",\r\n  \"email\": \"admin@gmail.com\",\r\n  \"password\": \"123454321\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:7000/api/v1.0.0/users/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"v1.0.0",
+								"users",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "forgotPassword",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"admin@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:7000/api/v1.0.0/users/forgotPassword",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"v1.0.0",
+								"users",
+								"forgotPassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"jwt\",pm.response.json().token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"admin@gmail.com\",\r\n  \"password\": \"123454321\"\r\n}\r\n// {\r\n//   \"email\": \"user@gmail.com\",\r\n//   \"password\": \"123454321\"\r\n// }\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:7000/api/v1.0.0/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"v1.0.0",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:7000/api/v1.0.0/users/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"v1.0.0",
+								"users",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "resetPassword",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"jwt\",pm.response.json().token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"password\": \"123454321\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "\"http://localhost:7000/api/v1.0.0/users/resetPassword/b046b89221b18b4f1d8588ffb54aeee8367c0026b8328d2b2313a0b285298bdc",
+							"protocol": "\"http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"v1.0.0",
+								"users",
+								"resetPassword",
+								"b046b89221b18b4f1d8588ffb54aeee8367c0026b8328d2b2313a0b285298bdc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateMe",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"adel\",\r\n    \"email\":\"adel@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:7000/api/v1.0.0/users/updateMe",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"v1.0.0",
+								"users",
+								"updateMe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update Me And Upload",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "photo",
+									"type": "file",
+									"src": "/C:/Users/User/Desktop/zAmericanEnglish/Level 0/1.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:7000/api/v1.0.0/users/updateMeAndUpload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"v1.0.0",
+								"users",
+								"updateMeAndUpload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update My Password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"jwt\",pm.response.json().token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"passwordCurrent\":\"123454321\",\r\n  \"password\": \"123454321\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:7000/api/v1.0.0/users/updateMyPassword",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"v1.0.0",
+								"users",
+								"updateMyPassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:7000/api/v1.0.0/users/me",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"v1.0.0",
+								"users",
+								"me"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "product",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "category",
+									"value": "ssdasd",
+									"type": "default"
+								},
+								{
+									"key": "name",
+									"value": "asdasd",
+									"type": "default"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/User/Desktop/zAmericanEnglish/Level 0/6.png"
+								},
+								{
+									"key": "price",
+									"value": "200",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "asfasfasf",
+									"type": "default"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:7000/api/v1.0.0/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"v1.0.0",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:7000/api/v1.0.0/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"v1.0.0",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get one",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:7000/api/v1.0.0/products/662566c6aa0ac9d7705241f1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"v1.0.0",
+								"products",
+								"662566c6aa0ac9d7705241f1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:7000/api/v1.0.0/products/65465ed4b2620880273d3c55",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"v1.0.0",
+								"products",
+								"65465ed4b2620880273d3c55"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"s\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:7000/api/v1.0.0/products/65465ed4b2620880273d3c55",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"v1.0.0",
+								"products",
+								"65465ed4b2620880273d3c55"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "review",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rating\":3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:7000/api/v1.0.0/products/662566c6aa0ac9d7705241f1/review",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"v1.0.0",
+								"products",
+								"662566c6aa0ac9d7705241f1",
+								"review"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "uplode",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/User/Desktop/zAmericanEnglish/Level 0/8.png"
+								},
+								{
+									"key": "name",
+									"value": "asfasf",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:7000/api/v1.0.0/products/663001939ad3e94a820da3d3/uplode",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"v1.0.0",
+								"products",
+								"663001939ad3e94a820da3d3",
+								"uplode"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "order",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cart\":[\r\n        {\"product\":\"6629586f47444c43956cf9e3\",\"quantity\":1,\"price\":200},\r\n        {\"product\":\"662a056609d79251b11f010d\",\"quantity\":2,\"price\":400}\r\n    ],\r\n    \"address\":\"saasdasdasdsa\",\r\n    \"total\":600\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:7000/api/v1.0.0/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"v1.0.0",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:7000/api/v1.0.0/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"v1.0.0",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all mien",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:7000/api/v1.0.0/orders/mien",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"v1.0.0",
+								"orders",
+								"mien"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get One",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:7000/api/v1.0.0/orders/654942f635bcec68d4cf2878",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"v1.0.0",
+								"orders",
+								"654942f635bcec68d4cf2878"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"address\":\"dsfdsfsdf\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:7000/api/v1.0.0/orders/654942f635bcec68d4cf2878",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"v1.0.0",
+								"orders",
+								"654942f635bcec68d4cf2878"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:7000/api/v1.0.0/orders/654942f635bcec68d4cf2878",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"v1.0.0",
+								"orders",
+								"654942f635bcec68d4cf2878"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
