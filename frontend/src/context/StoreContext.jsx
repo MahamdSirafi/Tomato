@@ -13,44 +13,43 @@ const StoreContextProvider = (props) => {
 
   const addToCart = async (itemId, price, image, name) => {
     let cart = [];
-    if (!cartItems[itemId]) {
+    let product = {
+      image,
+      name,
+      priceOne: price,
+      product: itemId,
+      quantity: 1,
+      price,
+    };
+    if (!localStorage.getItem("cart")) {
       setCartItems((prev) => ({ ...prev, [itemId]: 1 }));
-      let product = {
-        image,
-        name,
-        priceOne: price,
-        product: itemId,
-        quantity: 1,
-        price,
-      };
-      if (!localStorage.getItem("cart")) {
-        // console.log( cart)
-        cart.push(product);
-        cart = JSON.stringify(cart);
-        localStorage.setItem("cart", cart);
-        // console.log(localStorage.getItem("cart"))
-      } else {
-        cart = JSON.parse(localStorage.getItem("cart"));
-        // console.log(product);
-        cart.push(product);
-        // console.log(cart);
-        cart = JSON.stringify(cart);
-        localStorage.setItem("cart", cart);
-      }
+      cart.push(product);
+      cart = JSON.stringify(cart);
+      localStorage.setItem("cart", cart);
     } else {
-      setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+      let f = false;
       cart = JSON.parse(localStorage.getItem("cart"));
       cart.map((ele) => {
         if (ele.product == itemId) {
+          setCartItems((prev) => ({ ...prev, [itemId]: itemId++ }));
           ele.quantity++;
           ele.price += price;
+          f = true;
         }
       });
       cart = JSON.stringify(cart);
       localStorage.setItem("cart", cart);
+      //////////////do not find in cart ////////////////////
+      if (f == false) {
+        setCartItems((prev) => ({ ...prev, [itemId]: 1 }));
+        cart = JSON.parse(localStorage.getItem("cart"));
+        cart.push(product);
+        cart = JSON.stringify(cart);
+        localStorage.setItem("cart", cart);
+      }
+      //////////////////////////////////
     }
   };
-
   const removeFromCart = (itemId, price) => {
     let cart = [];
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
