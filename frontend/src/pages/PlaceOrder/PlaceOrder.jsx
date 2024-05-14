@@ -38,7 +38,6 @@ const PlaceOrder = () => {
       const response = await axios.post(url + "/orders", order, {
         headers: { Authorization: `Bearer ${token}` },
       });
-
       navigate("/payment");
     } catch (err) {
       notify();

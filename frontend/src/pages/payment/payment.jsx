@@ -22,6 +22,10 @@ const Payment = () => {
       progress: undefined,
       theme: "light",
     });
+    localStorage.removeItem("cart");
+    setTimeout(() => {
+      location.href = "/";
+    }, 5000);
   };
   return (
     <div>
