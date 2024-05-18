@@ -11,39 +11,38 @@ const Add = () => {
     name: "",
     description: "",
     price: "",
-    category: "Salad"
-  })
+    category: "Salad",
+  });
 
   const onChangeHandler = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    setData(data => ({ ...data, [name]: value }))
-  }
+    setData((data) => ({ ...data, [name]: value }));
+  };
   const onSubmitHandler = async (event) => {
     event.preventDefault();
     const formData = new FormData();
-    formData.append("name", data.name)
+    formData.append("name", data.name);
     formData.append("description", data.description);
     formData.append("price", Number(data.price));
     formData.append("category", data.category);
     formData.append("image", image);
-
-    const headers = new Headers();
-    headers.append(
-      "Authorization",
-      `  Bearer ${localStorage.getItem("token")}`
-    )
     try {
-      let response = await axios.post('http://localhost:7000/api/v1.0.0/products', formData, { headers })
-
+      let response = await axios.post(
+        "http://localhost:7000/api/v1.0.0/products",
+        formData,
+        {
+          headers: {
+            Authorization: `  Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
 
       console.log(response);
-
+    } catch (err) {
+      console.log(err.response.data.message);
     }
-    catch (err) {
-      console.log(err.response.data.message)
-    }
-  }
+  };
 
   return (
     <div className="add">
@@ -101,7 +100,13 @@ const Add = () => {
           </div>
           <div className="add-price flex-col">
             <p>Product price</p>
-            <input onChange={onChangeHandler} value={data.price} type="Number" name="price" placeholder="$20" />
+            <input
+              onChange={onChangeHandler}
+              value={data.price}
+              type="Number"
+              name="price"
+              placeholder="$20"
+            />
           </div>
         </div>
         <button type="submit" className="add-btn">

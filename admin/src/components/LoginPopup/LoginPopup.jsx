@@ -1,14 +1,14 @@
 import React, { useContext, useState } from 'react'
 import "./LoginPopup.css"
 import { assets } from '../../../../frontend/src/assets/assets'
-import { StoreContext } from '../../Context/StoreContext'
+// import { StoreContext } from '../../Context/StoreContext'
 import axios from 'axios';
 
 
 
 const LoginPopup = ({ setShowLogin }) => {
 
-    const { setToken } = useContext(StoreContext)
+    // const { setToken } = useContext(StoreContext)
 
     const url = "http://localhost:7000/api/v1.0.0"
     const [err, seterr] = useState(false);
@@ -60,7 +60,7 @@ const LoginPopup = ({ setShowLogin }) => {
             console.log(responce);
             localStorage.setItem("token", responce.data.token);
             setShowLogin(false)
-            setToken(responce.data.token);
+            // setToken(responce.data.token);
 
 
 
