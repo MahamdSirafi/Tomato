@@ -4,11 +4,14 @@ import { assets } from "../../assets/assets";
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from "react-router-dom";
 
 const Edit = () => {
+    const navigate = useNavigate();
     let token = localStorage.getItem("token");
     const [imagePath, setImagePath] = useState("")
     const [image, setImage] = useState(false);
+
 
     const [data, setData] = useState({
         name: "",
@@ -29,6 +32,9 @@ const Edit = () => {
 
 
         });
+        setTimeout(() => {
+            navigate("/list")
+        }, 4000)
     }
     const onChangeHandler = (event) => {
         const name = event.target.name;
@@ -58,12 +64,8 @@ const Edit = () => {
     useEffect(() => {
         fetchproduct()
     }, []);
-    const handleImageChange = (e) => {
-        setImage(e.target.files[0]);
-    };
-    console.log(data)
-    const onSubmitHandler = async (event) => {
-        event.preventDefault();
+    const onSubmitHandler = async () => {
+
         const formData = new FormData();
         formData.append("name", data.name);
         formData.append("description", data.description);
@@ -80,22 +82,13 @@ const Edit = () => {
                             Authorization: `  Bearer ${localStorage.getItem("token")}`,
                         },
                     });
-
-
-                setData({
-                    name: "",
-                    description: "",
-                    price: "",
-                    category: "Salad",
-                })
                 notify();
-                console.log(response.data);
-
             } catch (err) {
                 console.log(err.response.data.message);
             }
+        }
 
-        } else {
+        else {
             try {
                 let response = await axios.patch(
                     `http://localhost:7000/api/v1.0.0/products/${id}`,
@@ -105,26 +98,15 @@ const Edit = () => {
                             Authorization: `  Bearer ${localStorage.getItem("token")}`,
                         },
                     });
-                setData({
-                    name: "",
-                    description: "",
-                    price: "",
-                    category: "Salad",
-                })
                 notify();
-                console.log(response.data);
-
             } catch (err) {
                 console.log(err.response.data.message);
             }
-
         }
-
-
     }
     return (
         <div className="add">
-            <form className="flex-col" onSubmit={onSubmitHandler}>
+            <div className="flex-col" onSubmit={onSubmitHandler}>
                 <div className="add-img-upload flex-col">
                     <p>Upload Image</p>
                     <label htmlFor="image">
@@ -189,10 +171,10 @@ const Edit = () => {
                         />
                     </div>
                 </div>
-                <button type="submit" className="add-btn">
+                <button onClick={onSubmitHandler} className="add-btn">
                     ADD
                 </button>
-            </form>
+            </div>
             <ToastContainer position="top-right"
                 autoClose={5000}
                 hideProgressBar={false}
