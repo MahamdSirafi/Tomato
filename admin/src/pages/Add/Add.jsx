@@ -15,34 +15,12 @@ const Add = () => {
     price: "",
     category: "Salad",
   });
-<<<<<<< HEAD
-
-=======
->>>>>>> 87c21d6628069341918bf1f8c4f3d925ea6d55e9
 
   const onChangeHandler = (event) => {
     const name = event.target.name;
     const value = event.target.value;
     setData((data) => ({ ...data, [name]: value }));
   };
-<<<<<<< HEAD
-
-  const notify = () => {
-    toast.success('Added Successfully', {
-      position: "top-right",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-
-
-    });
-  }
-=======
->>>>>>> 87c21d6628069341918bf1f8c4f3d925ea6d55e9
   const onSubmitHandler = async (event) => {
     event.preventDefault();
     const formData = new FormData();
@@ -61,23 +39,8 @@ const Add = () => {
           },
         }
       );
-<<<<<<< HEAD
-      setData({
-        name: "",
-        description: "",
-        price: "",
-        category: "Salad",
-
-      });
-      setImage(false);
-      notify();
-
-      console.log(response.data);
-
-=======
 
       console.log(response);
->>>>>>> 87c21d6628069341918bf1f8c4f3d925ea6d55e9
     } catch (err) {
       console.log(err.response.data.message);
     }
