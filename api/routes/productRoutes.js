@@ -33,7 +33,6 @@ router
     authMiddlewers.protect,
     authMiddlewers.restrictTo('admin'),
     uploadPhoto,
-    dynamicMiddleware.filteredBody('image'),
     dynamicMiddleware.setPathImginBody('prodects', 'image'),
     productController.updateProduct
   );
