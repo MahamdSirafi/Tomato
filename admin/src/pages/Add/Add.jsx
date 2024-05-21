@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./Add.css";
 import { assets } from "../../assets/assets";
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Add = () => {
   const url = "http://localhost:7000/api/v1.0.0";
   let token = localStorage.getItem("token");
@@ -113,6 +115,17 @@ const Add = () => {
           ADD
         </button>
       </form>
+      <ToastContainer position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition:Bounce />
     </div>
   );
 };
